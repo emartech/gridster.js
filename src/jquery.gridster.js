@@ -332,6 +332,10 @@
 			}, this), 0);
 		}
 
+    setTimeout($.proxy(function () {
+        this.resize_responsive_layout();
+    }, this), 0);
+
 		$window.bind('resize.gridster', throttle(
 				$.proxy(this.recalculate_faux_grid, this), 200));
 	};
