@@ -322,7 +322,6 @@
 		this.get_widgets_from_DOM();
 		this.set_dom_grid_height();
 		this.set_dom_grid_width();
-		this.$wrapper.addClass('ready');
 		this.draggable();
 		this.options.resize.enabled && this.resizable();
 
@@ -334,6 +333,13 @@
 
     setTimeout($.proxy(function () {
         this.resize_responsive_layout();
+				this.$wrapper.addClass('ready');
+
+				if (this.options.ready) {
+					this.options.ready.call(this);
+				}
+
+				this.$el.trigger('gridster:ready');
     }, this), 0);
 
 		$window.bind('resize.gridster', throttle(
