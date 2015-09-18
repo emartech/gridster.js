@@ -1596,10 +1596,6 @@
 		this.$player.coords().grid.row = row;
 		this.$player.coords().grid.col = col;
 
-		if (this.options.draggable.stop) {
-			this.options.draggable.stop.call(this, event, ui);
-		}
-
 		this.$player.addClass('player-revert').removeClass('player')
 				.attr({
 					'data-col': col,
@@ -1608,6 +1604,10 @@
 					'left': '',
 					'top': ''
 				});
+				
+		if (this.options.draggable.stop) {
+			this.options.draggable.stop.call(this, event, ui);
+		}
 
 		this.$preview_holder.remove();
 
