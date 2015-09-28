@@ -1,4 +1,4 @@
-/*! gridster.js - v0.6.10 - 2015-08-27
+/*! gridster.js - v0.6.10 - 2015-09-28
 * https://dsmorse.github.io/gridster.js/
 * Copyright (c) 2015 ducksboard; Licensed MIT */
 
@@ -2494,10 +2494,6 @@
 		this.$player.coords().grid.row = row;
 		this.$player.coords().grid.col = col;
 
-		if (this.options.draggable.stop) {
-			this.options.draggable.stop.call(this, event, ui);
-		}
-
 		this.$player.addClass('player-revert').removeClass('player')
 				.attr({
 					'data-col': col,
@@ -2506,6 +2502,10 @@
 					'left': '',
 					'top': ''
 				});
+				
+		if (this.options.draggable.stop) {
+			this.options.draggable.stop.call(this, event, ui);
+		}
 
 		this.$preview_holder.remove();
 
