@@ -331,19 +331,16 @@
 			}, this), 0);
 		}
 
-    setTimeout($.proxy(function () {
-        this.resize_responsive_layout();
-				this.$wrapper.addClass('ready');
-
-				if (this.options.ready) {
-					this.options.ready.call(this);
-				}
-
-				this.$el.trigger('gridster:ready');
-    }, this), 0);
-
 		$window.bind('resize.gridster', throttle(
 				$.proxy(this.recalculate_faux_grid, this), 200));
+
+		this.$wrapper.addClass('ready');
+
+		if (this.options.ready) {
+			this.options.ready.call(this);
+		}
+
+		this.$el.trigger('gridster:ready');
 	};
 
 
